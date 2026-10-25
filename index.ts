@@ -1,0 +1,86 @@
+/** AREA: STYLIST CODER MODEL -> AUTO-GENERATED */
+export {
+	MathmlAnnotation,
+	MathmlAnnotationXml,
+	MathmlFormula,
+	MathmlMaction,
+	MathmlMatrix,
+	MathmlMerror,
+	MathmlMfrac,
+	MathmlMi,
+	MathmlMmultiscripts,
+	MathmlMn,
+	MathmlMo,
+	MathmlMover,
+	MathmlMpadded,
+	MathmlMphantom,
+	MathmlMprescripts,
+	MathmlMroot,
+	MathmlMrow,
+	MathmlMs,
+	MathmlMspace,
+	MathmlMsqrt,
+	MathmlMstyle,
+	MathmlMsub,
+	MathmlMsubsup,
+	MathmlMsup,
+	MathmlMtable,
+	MathmlMtd,
+	MathmlMtext,
+	MathmlMtr,
+	MathmlMunder,
+	MathmlMunderover,
+	MathmlNode,
+	MathmlSemantics
+} from './component';
+export {
+	MATHML_ELEMENT,
+	MATHML_FENCE,
+	MATHML_NAMESPACE
+} from './const';
+export {
+	checkMathmlNode,
+	createMathmlMatrixNode,
+	createMathmlTokenNode,
+	serializeMathmlMarkup
+} from './function';
+export type {
+	MathmlElementNode,
+	MathmlFence,
+	MathmlTag
+} from './type';
+export type {
+	RecipeMathmlAnnotation,
+	RecipeMathmlAnnotationXml,
+	RecipeMathmlFormula,
+	RecipeMathmlMaction,
+	RecipeMathmlMatrix,
+	RecipeMathmlMerror,
+	RecipeMathmlMfrac,
+	RecipeMathmlMi,
+	RecipeMathmlMmultiscripts,
+	RecipeMathmlMn,
+	RecipeMathmlMo,
+	RecipeMathmlMover,
+	RecipeMathmlMpadded,
+	RecipeMathmlMphantom,
+	RecipeMathmlMprescripts,
+	RecipeMathmlMroot,
+	RecipeMathmlMrow,
+	RecipeMathmlMs,
+	RecipeMathmlMspace,
+	RecipeMathmlMsqrt,
+	RecipeMathmlMstyle,
+	RecipeMathmlMsub,
+	RecipeMathmlMsubsup,
+	RecipeMathmlMsup,
+	RecipeMathmlMtable,
+	RecipeMathmlMtd,
+	RecipeMathmlMtext,
+	RecipeMathmlMtr,
+	RecipeMathmlMunder,
+	RecipeMathmlMunderover,
+	RecipeMathmlNode,
+	RecipeMathmlSemantics,
+	SlotMathmlGlobal
+} from './interface';
