@@ -1,6 +1,7 @@
 import MathmlFormula from '$stylist/mathml/component/molecule/mathml-formula/index.svelte';
 import type { RecipeMathmlFormula } from '$stylist/mathml/interface/recipe/mathml-formula';
 import type { ContractStory } from '$stylist/html/interface/contract/story';
+import { TOKEN_FONT_SIZE } from '$stylist/design-token/const/object/font-size';
 
 /** Formula from a serializable MathML tree; presets show typical layouts. */
 export default {
@@ -10,6 +11,7 @@ export default {
 		'Формула из сериализуемого дерева MathML: нативный рендер браузера, без JS-библиотек',
 	args: {
 		display: 'block',
+		size: '8',
 		alttext: 'x equals minus b plus or minus square root of b squared minus 4 a c, over 2 a',
 		nodes: [
 			{ kind: 'element', tag: 'mi', children: [{ kind: 'text', value: 'x' }] },
@@ -58,6 +60,12 @@ export default {
 		]
 	},
 	controls: {
+		size: {
+			type: 'select',
+			label: 'Size',
+			description: 'Font size step; block formulas default to 6.',
+			options: Object.keys(TOKEN_FONT_SIZE)
+		},
 		display: { type: 'select', options: ['block', 'inline'] },
 		alttext: { type: 'text' },
 		displaystyle: { type: 'boolean' },

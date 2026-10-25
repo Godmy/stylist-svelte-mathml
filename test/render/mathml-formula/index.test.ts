@@ -1,5 +1,6 @@
 import { afterEach, describe, expect, it } from 'vitest';
 import { cleanup, render } from '@testing-library/svelte';
+import { createRawSnippet } from 'svelte';
 import MathmlFormula from '$stylist/mathml/component/molecule/mathml-formula/index.svelte';
 import MathmlMatrix from '$stylist/mathml/component/organism/mathml-matrix/index.svelte';
 import { MATHML_NAMESPACE } from '$stylist/mathml/const/value/mathml-namespace';
@@ -34,6 +35,24 @@ describe('MathmlFormula and MathmlMatrix', () => {
 		expect(math.querySelector('msup')!.getAttribute('data-mathml-node')).toBe('power');
 		expect(math.textContent).toBe('x2');
 		expect(mathmlOnly(math)).toBe(true);
+	});
+
+	it('marks block formulas and size steps for the font-size scale', () => {
+		const block = render(MathmlFormula, { props: { display: 'block', nodes: [] } }).container;
+		expect(block.querySelector('math')!.getAttribute('display')).toBe('block');
+		expect(block.querySelector('math')!.hasAttribute('data-size')).toBe(false);
+		const sized = render(MathmlFormula, { props: { size: '8', nodes: [] } }).container;
+		expect(sized.querySelector('math')!.getAttribute('data-size')).toBe('8');
+	});
+
+	it('draws markup children after the node tree', () => {
+		const { container } = render(MathmlFormula, {
+			props: {
+				nodes: [{ kind: 'element', tag: 'mi', children: [{ kind: 'text', value: 'x' }] }],
+				children: createRawSnippet(() => ({ render: () => '<mn>2</mn>' }))
+			}
+		});
+		expect(container.querySelector('math')!.textContent).toBe('x2');
 	});
 
 	it('draws a fenced matrix with typed cells', () => {
