@@ -11,30 +11,51 @@ export default {
 	controls: {
 		mathvariant: {
 			type: 'select',
+			label: 'Math Variant',
+			description:
+				'Font variant of the identifier; `normal` turns off the italic of one-letter names.',
 			options: ['normal']
 		},
 		displaystyle: {
-			type: 'boolean'
+			type: 'boolean',
+			label: 'Display Style',
+			description: 'Draws scripts and operators in display size instead of inline size.'
 		},
 		scriptlevel: {
 			type: 'number',
+			label: 'Script Level',
+			description: 'Script nesting level; each step makes the content smaller.',
 			min: -2,
 			max: 2,
 			step: 1
 		},
 		mathcolor: {
-			type: 'color'
+			type: 'color',
+			label: 'Math Color',
+			description: 'Text color of the element (MathML mathcolor).'
 		},
 		mathbackground: {
-			type: 'color'
+			type: 'color',
+			label: 'Math Background',
+			description: 'Background color of the element (MathML mathbackground).'
 		},
 		dir: {
 			type: 'select',
+			label: 'Direction',
+			description: 'Writing direction of the content.',
 			options: ['ltr', 'rtl']
 		},
 		class: {
-			type: 'text'
+			type: 'text',
+			label: 'Class',
+			description: 'Extra class on the root element.'
 		}
+	},
+	presets: {
+		Upright: { mathvariant: 'normal' },
+		Colored: { mathcolor: '#2563eb' },
+		Highlighted: { mathbackground: '#fef3c7' },
+		Script: { scriptlevel: 1 }
 	},
 	layout: 'centered'
 } satisfies ContractStory<RecipeMathmlMi>;

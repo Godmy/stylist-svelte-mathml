@@ -7,6 +7,14 @@ import { MATHML_NAMESPACE } from '$stylist/mathml/const/value/mathml-namespace';
 
 afterEach(() => cleanup());
 
+const [formulaSource] = Object.values(
+	import.meta.glob<string>('../../../component/molecule/mathml-formula/index.svelte', {
+		eager: true,
+		query: '?raw',
+		import: 'default'
+	})
+);
+
 const mathmlOnly = (root: Element) =>
 	[root, ...root.querySelectorAll('*')].every((node) => node.namespaceURI === MATHML_NAMESPACE);
 
@@ -43,6 +51,14 @@ describe('MathmlFormula and MathmlMatrix', () => {
 		expect(block.querySelector('math')!.hasAttribute('data-size')).toBe(false);
 		const sized = render(MathmlFormula, { props: { size: '8', nodes: [] } }).container;
 		expect(sized.querySelector('math')!.getAttribute('data-size')).toBe('8');
+	});
+
+	it('sizes block formulas in em and explicit steps on the absolute scale', () => {
+		// jsdom does not cascade font-size, so the contract is checked on the stylesheet.
+		expect(formulaSource).toMatch(
+			/:where\(\.mathml-formula\[display='block'\]:not\(\[data-size\]\)\) \{\s*font-size: 1\.5em;/
+		);
+		expect(formulaSource).toContain('font-size: var(--font-size-8, 2rem);');
 	});
 
 	it('draws markup children after the node tree', () => {

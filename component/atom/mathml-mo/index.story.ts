@@ -14,60 +14,103 @@ export default {
 	controls: {
 		form: {
 			type: 'select',
+			label: 'Form',
+			description: 'Operator position: prefix, infix or postfix.',
 			options: ['prefix', 'infix', 'postfix']
 		},
 		fence: {
-			type: 'boolean'
+			type: 'boolean',
+			label: 'Fence',
+			description: 'Marks the operator as a fence such as a parenthesis.'
 		},
 		separator: {
-			type: 'boolean'
+			type: 'boolean',
+			label: 'Separator',
+			description: 'Marks the operator as a separator such as a comma.'
 		},
 		lspace: {
-			type: 'text'
+			type: 'text',
+			label: 'Left Space',
+			description: 'Space before the operator as a CSS length.'
 		},
 		rspace: {
-			type: 'text'
+			type: 'text',
+			label: 'Right Space',
+			description: 'Space after the operator as a CSS length.'
 		},
 		stretchy: {
-			type: 'boolean'
+			type: 'boolean',
+			label: 'Stretchy',
+			description: 'Lets the operator stretch to the height of its neighbours.'
 		},
 		symmetric: {
-			type: 'boolean'
+			type: 'boolean',
+			label: 'Symmetric',
+			description: 'Stretches the operator symmetrically around the math axis.'
 		},
 		maxsize: {
-			type: 'text'
+			type: 'text',
+			label: 'Max Size',
+			description: 'Upper limit of the stretched operator size.'
 		},
 		minsize: {
-			type: 'text'
+			type: 'text',
+			label: 'Min Size',
+			description: 'Lower limit of the stretched operator size.'
 		},
 		largeop: {
-			type: 'boolean'
+			type: 'boolean',
+			label: 'Large Operator',
+			description: 'Draws the operator large in display style.'
 		},
 		movablelimits: {
-			type: 'boolean'
+			type: 'boolean',
+			label: 'Movable Limits',
+			description: 'Moves under/over scripts to the side in inline style.'
 		},
 		displaystyle: {
-			type: 'boolean'
+			type: 'boolean',
+			label: 'Display Style',
+			description: 'Draws scripts and operators in display size instead of inline size.'
 		},
 		scriptlevel: {
 			type: 'number',
+			label: 'Script Level',
+			description: 'Script nesting level; each step makes the content smaller.',
 			min: -2,
 			max: 2,
 			step: 1
 		},
 		mathcolor: {
-			type: 'color'
+			type: 'color',
+			label: 'Math Color',
+			description: 'Text color of the element (MathML mathcolor).'
 		},
 		mathbackground: {
-			type: 'color'
+			type: 'color',
+			label: 'Math Background',
+			description: 'Background color of the element (MathML mathbackground).'
 		},
 		dir: {
 			type: 'select',
+			label: 'Direction',
+			description: 'Writing direction of the content.',
 			options: ['ltr', 'rtl']
 		},
 		class: {
-			type: 'text'
+			type: 'text',
+			label: 'Class',
+			description: 'Extra class on the root element.'
 		}
+	},
+	presets: {
+		Prefix: { form: 'prefix' },
+		Stretchy: { stretchy: true, symmetric: true },
+		Spaced: { lspace: '1em', rspace: '1em' },
+		'Large operator': { largeop: true, movablelimits: false },
+		Colored: { mathcolor: '#2563eb' },
+		Highlighted: { mathbackground: '#fef3c7' },
+		Script: { scriptlevel: 1 }
 	},
 	layout: 'centered'
 } satisfies ContractStory<RecipeMathmlMo>;

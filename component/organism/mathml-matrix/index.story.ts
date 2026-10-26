@@ -22,13 +22,42 @@ export default {
 		size: {
 			type: 'select',
 			label: 'Size',
-			description: 'Font size step; block formulas default to 6.',
+			description:
+				'Absolute font size step; without it a block formula is 1.5em of the text around it.',
 			options: Object.keys(TOKEN_FONT_SIZE)
 		},
-		fence: { type: 'select', options: ['parentheses', 'brackets', 'braces', 'bars', 'none'] },
-		display: { type: 'select', options: ['block', 'inline'] },
-		alttext: { type: 'text' },
-		mathcolor: { type: 'color' }
+		fence: {
+			type: 'select',
+			label: 'Fence',
+			description: 'Marks the operator as a fence such as a parenthesis.',
+			options: ['parentheses', 'brackets', 'braces', 'bars', 'none']
+		},
+		display: {
+			type: 'select',
+			label: 'Display',
+			description: 'block centres the formula on its own line, inline keeps it in the text.',
+			options: ['block', 'inline']
+		},
+		alttext: {
+			type: 'text',
+			label: 'Alt Text',
+			description: 'Text alternative read by assistive technology.'
+		},
+		mathcolor: {
+			type: 'color',
+			label: 'Math Color',
+			description: 'Text color of the element (MathML mathcolor).'
+		},
+		rows: {
+			type: 'json',
+			label: 'Rows',
+			description: 'Matrix rows: numbers become mn, letters mi, signs mo.',
+			example: [
+				[1, 'a'],
+				['b', 2]
+			]
+		},
+		class: { type: 'text', label: 'Class', description: 'Extra class on the root element.' }
 	},
 	presets: {
 		Identity: {

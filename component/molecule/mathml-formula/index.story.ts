@@ -63,15 +63,48 @@ export default {
 		size: {
 			type: 'select',
 			label: 'Size',
-			description: 'Font size step; block formulas default to 6.',
+			description:
+				'Absolute font size step; without it a block formula is 1.5em of the text around it.',
 			options: Object.keys(TOKEN_FONT_SIZE)
 		},
-		display: { type: 'select', options: ['block', 'inline'] },
-		alttext: { type: 'text' },
-		displaystyle: { type: 'boolean' },
-		mathcolor: { type: 'color' },
-		mathsize: { type: 'text' },
-		dir: { type: 'select', options: ['ltr', 'rtl'] }
+		display: {
+			type: 'select',
+			label: 'Display',
+			description: 'block centres the formula on its own line, inline keeps it in the text.',
+			options: ['block', 'inline']
+		},
+		alttext: {
+			type: 'text',
+			label: 'Alt Text',
+			description: 'Text alternative read by assistive technology.'
+		},
+		displaystyle: {
+			type: 'boolean',
+			label: 'Display Style',
+			description: 'Draws scripts and operators in display size instead of inline size.'
+		},
+		mathcolor: {
+			type: 'color',
+			label: 'Math Color',
+			description: 'Text color of the element (MathML mathcolor).'
+		},
+		mathsize: {
+			type: 'text',
+			label: 'Math Size',
+			description: 'Font size of the element as a CSS length.'
+		},
+		dir: {
+			type: 'select',
+			label: 'Direction',
+			description: 'Writing direction of the content.',
+			options: ['ltr', 'rtl']
+		},
+		nodes: {
+			type: 'json',
+			label: 'Nodes',
+			description: 'MathML tree drawn inside <math>, as serializable nodes.',
+			example: [{ kind: 'element', tag: 'mi', children: [{ kind: 'text', value: 'x' }] }]
+		}
 	},
 	presets: {
 		Pythagoras: {

@@ -25,5 +25,26 @@ export default {
 			]
 		}
 	},
+	controls: {
+		node: {
+			type: 'json',
+			label: 'Node',
+			description: 'One MathML node with its children.',
+			example: { kind: 'element', tag: 'mi', children: [{ kind: 'text', value: 'x' }] }
+		}
+	},
+	presets: {
+		Fraction: {
+			node: {
+				kind: 'element',
+				tag: 'mfrac',
+				children: [
+					{ kind: 'element', tag: 'mi', children: [{ kind: 'text', value: 'a' }] },
+					{ kind: 'element', tag: 'mi', children: [{ kind: 'text', value: 'b' }] }
+				]
+			}
+		},
+		Text: { node: { kind: 'text', value: 'x' } }
+	},
 	layout: 'centered'
 } satisfies ContractStory<RecipeMathmlNode>;
